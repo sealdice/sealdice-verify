@@ -41,7 +41,7 @@ export const decode = (src: string): Uint8Array => {
     if (newBits === undefined) {
       newBitsCount = 11 - remaining
       newBits = tailMap.get(c)
-      if (!newBits || si < se || newBits >= (1 << newBitsCount)) {
+      if (newBits === undefined || si < se || newBits >= (1 << newBitsCount)) {
         throw new DecodeError(`Invalid character: ${c}`)
       }
     }
